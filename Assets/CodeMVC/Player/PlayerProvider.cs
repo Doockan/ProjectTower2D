@@ -1,27 +1,42 @@
 ﻿using System;
+using CodeMVC.AssetManagement;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-namespace CodeMVC.Data
+namespace CodeMVC.Player
 {
     public class PlayerProvider : MonoBehaviour
     {
-        public event Action<bool> OnTriggetEnterChange;
+        public event Action<bool> OnGroundEnterChange;
+        public event Action<Collision2D> OnProjectileEnterChange;
+
+        [SerializeField] private Transform _trajectoryLine;
         
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpForce;
+        [SerializeField] private float _throwForce;
 
+        public Transform TrajectoryLine => _trajectoryLine;
+        
         public float Speed => _speed;
         public float JumpForce => _jumpForce;
-        public Vector2 Position => transform.position;
+        public float ThrowForce => _throwForce;
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.GetComponent<TilemapCollider2D>())
+            if (other.gameObject.layer == LayerName.Ground);
             {
-                OnTriggetEnterChange?.Invoke(true);
+                OnGroundEnterChange?.Invoke(other.gameObject.layer == LayerName.Ground);
             }
-            
+
+            if (other.gameObject.layer == LayerName.Projectile)
+            {
+                OnProjectileEnterChange?.Invoke(other);
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            OnGroundEnterChange?.Invoke(other.gameObject.layer == LayerName.Ground);
         }
     }
 }

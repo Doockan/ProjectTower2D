@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using CodeMVC.DataBase;
+using UnityEngine;
 
 namespace CodeMVC.Controller
 {
     public sealed class GameStarter : MonoBehaviour
     {
-        [SerializeField] private Data.Data _data;
+        [SerializeField] private Data _data;
         private Controllers _controllers;
         
         private void Start()

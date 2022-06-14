@@ -8,6 +8,7 @@ TagManager:
   - PlayerBullet
   - Coin
   - Chest
+  - InitialPoint
   layers:
   - Default
   - TransparentFX
@@ -18,12 +19,12 @@ TagManager:
   - Player
   - Enemy
   - Ground
+  - Wall
   - Projectile
-  - PlayerAttack
-  - CrushGround
-  - InvWalls
-  - DestroyBox
-  - Key
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

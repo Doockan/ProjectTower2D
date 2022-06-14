@@ -1,22 +1,21 @@
 using System;
 using CodeMVC.Interface;
-using UnityEngine;
 
 namespace CodeMVC.UserInput
 {
     internal sealed class MobileInputVertical : IUserInputProxy
     {
         public event Action<float> AxisOnChange = delegate(float f) {  };
-        private readonly DynamicJoystick _joustick;
+        private readonly DynamicJoystick _joystick;
 
         public MobileInputVertical(DynamicJoystick joystick)
         {
-            _joustick = joystick;
+            _joystick = joystick;
         }
         
         public void GetAxis()
         {
-            AxisOnChange.Invoke(_joustick.Vertical);
+            AxisOnChange.Invoke(_joystick.Vertical);
         }
     }
 }

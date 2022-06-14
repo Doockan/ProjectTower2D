@@ -1,12 +1,12 @@
 ﻿using CodeMVC.Controller;
 using CodeMVC.Interface;
+using CodeMVC.Player;
 using UnityEngine;
 
 namespace CodeMVC.StateMachines.PlayerState
 {
     public class StandingState : GroundedState
     {
-        private bool _jump;
         private bool _crounch;
 
         private float _horizontal;
@@ -19,14 +19,20 @@ namespace CodeMVC.StateMachines.PlayerState
 
         public override void Enter()
         {
-            Debug.Log("stay");
             base.Enter();
+            
             _horizontalInputProxy.AxisOnChange += HorizontalOnAxisOnChange;
             _verticalInputProxy.AxisOnChange += VerticalOnAxisOnChange;
             
-            speed = _player.MovementSpeed;
+            speed = Player.PlayerProvider.Speed;
             _crounch = false;
-            _jump = false;
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _horizontalInputProxy.AxisOnChange -= HorizontalOnAxisOnChange;
+            _verticalInputProxy.AxisOnChange -= VerticalOnAxisOnChange;
         }
 
         public override void HandleInput()
@@ -34,17 +40,17 @@ namespace CodeMVC.StateMachines.PlayerState
             base.HandleInput();
             if (_vertical > 0.7f)
             {
-                _jump = true;
+                Player.Jump();
+                _stateMachine.ChangeState(Player.jumping);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                _stateMachine.ChangeState(Player.deadEye);
             }
         }
 
         public override void LogicUpdate()
         {
-            base.LogicUpdate();
-            if (_jump)
-            {
-                _stateMachine.ChangeState(_player.jumping);
-            }
         }
 
 

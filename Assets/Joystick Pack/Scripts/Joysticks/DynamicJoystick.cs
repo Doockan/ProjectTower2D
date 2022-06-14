@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using CodeMVC.UserInput;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick

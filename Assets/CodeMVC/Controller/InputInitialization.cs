@@ -5,18 +5,16 @@ namespace CodeMVC.Controller
 {
     internal sealed class InputInitialization : IInitialization
     {
-        private IMobileInputFactory _joystick;
         
         private IUserInputProxy _InputHorizontal;
         private IUserInputProxy _InputVertical;
 
-        public InputInitialization(IMobileInputFactory joystick)
+        public InputInitialization(IGameFactory factory)
         {
-            _joystick = joystick;
-            
-            var inputJoystick = _joystick.Create();
-            _InputHorizontal = new MobileInputHorizontal(inputJoystick);
-            _InputVertical = new MobileInputVertical(inputJoystick);
+            var inputJoystick = factory.CreateJoystick();
+            var joystick = inputJoystick.GetComponentInChildren<DynamicJoystick>();
+            _InputHorizontal = new MobileInputHorizontal(joystick);
+            _InputVertical = new MobileInputVertical(joystick);
         }
         
         public void Initialization()

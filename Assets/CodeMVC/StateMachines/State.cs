@@ -1,5 +1,6 @@
 ﻿using CodeMVC.Controller;
 using CodeMVC.Interface;
+using CodeMVC.Player;
 
 namespace CodeMVC.StateMachines
 {
@@ -7,14 +8,16 @@ namespace CodeMVC.StateMachines
     {
         protected IUserInputProxy _horizontalInputProxy;
         protected IUserInputProxy _verticalInputProxy;
-        protected PlayerController _player;
+        protected PlayerController Player;
         protected StateMachine _stateMachine;
+        
+        
 
         protected State(PlayerController player, StateMachine stateMachine, (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical) input)
         {
             _horizontalInputProxy = input.inputHorizontal;
             _verticalInputProxy = input.inputVertical;
-            _player = player;
+            Player = player;
             _stateMachine = stateMachine;
         }
 

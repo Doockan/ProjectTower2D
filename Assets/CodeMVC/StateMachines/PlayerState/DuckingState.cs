@@ -1,5 +1,6 @@
 ﻿using CodeMVC.Controller;
 using CodeMVC.Interface;
+using CodeMVC.Player;
 
 namespace CodeMVC.StateMachines.PlayerState
 {

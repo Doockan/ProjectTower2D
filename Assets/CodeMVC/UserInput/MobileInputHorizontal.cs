@@ -12,8 +12,7 @@ namespace CodeMVC.UserInput
         {
             _joystick = joystick;
         }
-        
-        
+
         public void GetAxis()
         {
             AxisOnChange.Invoke(_joystick.Horizontal);

@@ -16,7 +16,7 @@ namespace CodeMVC.Controller
         
         public void Initialization()
         {
-            _camera.position = new Vector3(_positionPlayer.x, _positionPlayer.y, _camera.position.z);
+            _camera.position = new Vector3(_positionPlayer.x, _camera.position.y, _camera.position.z);
         }
     }
 }

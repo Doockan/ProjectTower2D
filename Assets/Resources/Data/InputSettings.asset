@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccc99cb389343a890aacb5663d1e5fa, type: 3}
   m_Name: InputSettings
   m_EditorClassIdentifier: 
-  _dynamicJoystick: {fileID: 8135886326569738823, guid: 56fae09712773584fb63896d473a98ee, type: 3}
-  _canvas: {fileID: 1722147037095097694, guid: fe03cb7d5648df94ab59e9b029d02a6f, type: 3}
+  _hud: {fileID: 2327314526666054241, guid: e1b67caf97f580e43815eebb9cabdd73, type: 3}
